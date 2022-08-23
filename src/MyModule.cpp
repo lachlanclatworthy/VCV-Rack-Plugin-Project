@@ -48,6 +48,21 @@ struct MyModuleWidget : ModuleWidget {
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.24, 108.713)), module, MyModule::SINE_OUTPUT));
 
 		addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(15.24, 25.81)), module, MyModule::BLINK_LIGHT));
+
+		// MINE
+
+		// Input
+		addInput(Port::create<port-type>(Vec(0,0), Port::INPUT, module, MyModule::PITCH_INPUT));
+		
+		// Output
+		addOutput(Port::create<port-type>(Vec(1,1), Port::OUTPUT, module, MyModule::SINE_OUTPUT));
+
+		// Parameter
+		addParam(ParamWidget::create<RoundBlackKnob>(Vec(2,0), module, MyModule::PITCH_PARAM, 0.f, 1.f, 0.f));
+
+		// Light
+		addChild(ModuleLightWidget::create<LargeLight<YellowLight>>(Vec(5,5), module, MyModule::BLINK_LIGHT));
+
 	}
 };
 
