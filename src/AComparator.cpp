@@ -59,7 +59,7 @@ struct AComparatorWidget : ModuleWidget {
 
 void AComparator::process(const ProcessArgs& args) {
 	if (inputs[INPUTA1].isConnected() && inputs[INPUTB1].isConnected()) {
-		float out = inputs[INPUTA1].getVoltage() >= input[INPUTB1].getVoltage();
+		float out = inputs[INPUTA1].getVoltage() >= inputs[INPUTB1].getVoltage();
 		outputs[OUTPUT1].setVoltage(10.f * out);
 		lights[OUTPUT1].setBrightness(out);
 	}
