@@ -59,13 +59,13 @@ struct AComparatorWidget : ModuleWidget {
 
 		// SEC. 2
 
-		addInput(createInput<PJ301MPort>(Vec(50, 168), module, AComparator::INPUTA2));
+		addInput(createInput<PJ301MPort>(Vec(50, mm2px(80.373f)), module, AComparator::INPUTA2));
 
-		addInput(createInput<PJ301MPort>(Vec(50, 198), module, AComparator::INPUTB2));
+		addInput(createInput<PJ301MPort>(Vec(50, mm2px(91.662f)), module, AComparator::INPUTB2));
 
-		addOutput(createOutput<PJ3410Port>(Vec(46, 228), module, AComparator::OUTPUT2));
+		addOutput(createOutput<PJ3410Port>(Vec(46, mm2px(102.951f)), module, AComparator::OUTPUT2));
 
-		addChild(createLight<TinyLight<GreenLight>>(Vec(80, 240), module, AComparator::LIGHT_2));
+		addChild(createLight<TinyLight<GreenLight>>(Vec(80, mm2px(105.746f)), module, AComparator::LIGHT_2));
 	}
 };
 
