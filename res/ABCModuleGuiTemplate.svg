@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="ABCModuleInterface.svg"
+   sodipodi:docname="ABCModuleGuiTemplate.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,16 +23,17 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     showgrid="true"
-     inkscape:zoom="5.6568543"
-     inkscape:cx="178.2793"
-     inkscape:cy="467.39758"
-     inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1">
+     showgrid="false"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="63.993163"
+     inkscape:cy="206.82873"
+     inkscape:window-width="958"
+     inkscape:window-height="1018"
+     inkscape:window-x="953"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer2"
+     showguides="false">
     <inkscape:grid
        type="xygrid"
        id="grid9"
@@ -62,5 +63,107 @@
        x="0"
        y="123.49999"
        ry="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#62cb62;fill-opacity:1;stroke-width:0.264583"
+       x="20.205576"
+       y="7.2964578"
+       id="text478"><tspan
+         sodipodi:role="line"
+         id="tspan476"
+         style="fill:#62cb62;fill-opacity:1;stroke-width:0.264583"
+         x="20.205576"
+         y="7.2964578">AComparator</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+       x="6.7351923"
+       y="22.263552"
+       id="text482"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+         x="6.7351923"
+         y="22.263552"
+         id="tspan484">A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+       x="6.3610144"
+       y="28.998741"
+       id="text490"><tspan
+         sodipodi:role="line"
+         id="tspan488"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+         x="6.3610144"
+         y="28.998741">B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;white-space:pre;inline-size:12.1924;display:inline;fill:#aaccff;stroke-width:0.265;stroke-dasharray:none"
+       x="10.102788"
+       y="34.611401"
+       id="text494"
+       transform="translate(-3.1805073,2.4321527)"><tspan
+         x="10.102788"
+         y="34.611401"
+         id="tspan7890"><tspan
+           style="fill:#000000"
+           id="tspan7888">A &gt; B</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+       x="6.7351923"
+       y="15.34127"
+       id="text552"><tspan
+         sodipodi:role="line"
+         id="tspan550"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+         x="6.7351923"
+         y="15.34127">SEC.1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+       x="8.7931681"
+       y="70.345337"
+       id="text7086"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+         x="8.7931681"
+         y="70.345337"
+         id="tspan7084">A</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+       x="8.9802561"
+       y="77.454704"
+       id="text7090"><tspan
+         sodipodi:role="line"
+         id="tspan7088"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
+         x="8.9802561"
+         y="77.454704">B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;white-space:pre;inline-size:12.1924;display:inline;fill:#aaccff;stroke-width:0.265;stroke-dasharray:none"
+       x="10.102788"
+       y="34.611401"
+       id="text7094"
+       transform="translate(-1.3096206,49.765586)"><tspan
+         x="10.102788"
+         y="34.611401"
+         id="tspan7894"><tspan
+           style="fill:#000000"
+           id="tspan7892">A &gt; B</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none;-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
+       x="7.6706357"
+       y="63.048882"
+       id="text7098"><tspan
+         sodipodi:role="line"
+         id="tspan7133">SEC.2</tspan></text>
   </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="components" />
 </svg>

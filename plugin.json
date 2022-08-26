@@ -14,11 +14,11 @@
   "changelogUrl": "",
   "modules": [
     {
-      "slug": "MyModule",
-      "name": "My Module",
-      "description": "Simple sine oscillator",
+      "slug": "AComparator",
+      "name": "AComparator",
+      "description": "Takes two input voltages. Returns a high output voltage if Input 1 is higher than Input 2",
       "tags": [
-        "VCO"
+        "Logic"
       ]
     }
   ]
