@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
-   sodipodi:docname="ABCModuleGuiTemplate.svg"
+   sodipodi:docname="AComparator.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -105,9 +105,9 @@
        transform="translate(-3.1805073,2.4321527)"><tspan
          x="10.102788"
          y="34.611401"
-         id="tspan7890"><tspan
+         id="tspan7924"><tspan
            style="fill:#000000"
-           id="tspan7888">A &gt; B</tspan></tspan></text>
+           id="tspan7922">A &gt; B</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none"
@@ -150,9 +150,9 @@
        transform="translate(-1.3096206,49.765586)"><tspan
          x="10.102788"
          y="34.611401"
-         id="tspan7894"><tspan
+         id="tspan7928"><tspan
            style="fill:#000000"
-           id="tspan7892">A &gt; B</tspan></tspan></text>
+           id="tspan7926">A &gt; B</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:3.175px;fill:#000000;fill-opacity:1;stroke-width:0.265;stroke-dasharray:none;-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
