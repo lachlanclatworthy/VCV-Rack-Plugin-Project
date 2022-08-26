@@ -42,6 +42,21 @@ struct AComparator : Module {
 	void process(const ProcessArgs& args) override;
 };
 
+struct AComparatorWidget : ModuleWidget {
+	AComparatorWidget(AComparator* module) {
+		setModule(module);
+		setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/AComparator.svg")));
+
+		addInput(createInput<PJ301MPort>(Vec(50, 78), module, AComparator::INPUTA1));
+
+		addInput(createInput<PJ301MPort>(Vec(50, 108), module, AComparator::INPUTB1));
+
+		addOutput(createOutput<PJ3410Port>(Vec(46, 138), module, AComparator::OUTPUT1));
+
+		addChild(createLight<TinyLight<GreenLight>>(Vec(80, 150), module, AComparator::LIGHT_1));
+	}
+};
+
 void AComparator::process(const ProcessArgs& args) {
 	if (inputs[INPUTA1].isConnected() && inputs[INPUTB1].isConnected()) {
 		float out = inputs[INPUTA1].getVoltage() >= input[INPUTB1].getVoltage();
