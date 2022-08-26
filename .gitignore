@@ -5,3 +5,8 @@
 /plugin.dll
 .DS_Store
 .vscode/c_cpp_properties.json
+.vs/MyPlugin/FileContentIndex/read.lock
+.vs/MyPlugin/v17/.suo
+.vs/MyPlugin/v17/Browse.VC.db
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
