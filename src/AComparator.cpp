@@ -64,3 +64,5 @@ void AComparator::process(const ProcessArgs& args) {
 		lights[OUTPUT1].setBrightness(out);
 	}
 }
+
+Model* modelAComparator = createModel<AComparator, AComparatorWidget>("AComparator");
