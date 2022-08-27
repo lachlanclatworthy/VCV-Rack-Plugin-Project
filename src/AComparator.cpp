@@ -71,12 +71,26 @@ struct AComparatorWidget : ModuleWidget {
 
 void AComparator::process(const ProcessArgs& args) {
 	float out;
+	int outputIndex = 0;
+	float threshold = 0.1f;
+	float voltageA;
+	float voltageB;
 
-	for (int i = 0; i < NUM_INPUTS; i++) {
-		if (inputs[i].isConnected() && inputs[i].isConnected()) {
-			out = inputs[i].getVoltage() >= inputs[i].getVoltage() ? 1.f : 0.f;
-			outputs[i].setVoltage(10.f * out);
-			lights[i].setBrightness(out);
+	// For each dual set of inputs
+	for (int i = 0; i < NUM_INPUTS; i += 2) {
+		if (inputs[i].isConnected() && inputs[i + 1].isConnected()) {
+
+			voltageA = inputs[i].getVoltage();
+			voltageB = inputs[i + 1].getVoltage();
+
+			out = voltageA >= voltageB ? 10.f : 0.f;
+
+			// Only update output and light if threshold is surpassed
+			if (abs(voltageA - voltageB) >= threshold) {
+				outputs[outputIndex].setVoltage(10.f * out);
+				lights[outputIndex].setBrightness(out);
+			}
+			outputIndex++;
 		}
 	}
 }
