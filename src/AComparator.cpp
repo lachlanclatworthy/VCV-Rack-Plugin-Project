@@ -83,7 +83,7 @@ void AComparator::process(const ProcessArgs& args) {
 			voltageA = inputs[i].getVoltage();
 			voltageB = inputs[i + 1].getVoltage();
 
-			out = voltageA >= voltageB ? 10.f : 0.f;
+			out = voltageA >= voltageB ? 1.f : 0.f;
 
 			// Only update output and light if threshold is surpassed
 			if (abs(voltageA - voltageB) >= threshold) {
