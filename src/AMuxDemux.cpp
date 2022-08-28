@@ -45,7 +45,7 @@ struct AMuxDemux : Module {
 		configInput(M_INPUT_2, "");
 		configInput(M_INPUT_3, "");
 		configInput(M_INPUT_4, "");
-		configInput(INPUTB1_INPUT, "");
+		configInput(D_MAIN_IN, "");
 		configOutput(M_MAIN_OUT, "");
 		configOutput(D_OUTPUT_1, "");
 		configOutput(D_OUTPUT_2, "");
@@ -55,6 +55,8 @@ struct AMuxDemux : Module {
 
 	void process(const ProcessArgs& args) override {
 	}
+
+	unsigned int selMux, selDemux;	// selector values
 };
 
 
