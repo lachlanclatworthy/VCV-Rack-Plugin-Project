@@ -41,17 +41,6 @@ struct AMuxDemux : Module {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
 		configParam(M_SELECTOR_PARAM, 0.f, 3.0f, 0.f, "Mux Selector");
 		configParam(D_SELECTOR_PARAM, 0.f, 3.0f, 0.f, "Demux Selector");
-		configInput(M_INPUT_1, "MUX IN 1");
-		configInput(M_INPUT_2, "MUX IN 2");
-		configInput(M_INPUT_3, "MUX IN 3");
-		configInput(M_INPUT_4, "MUX IN 4");
-		configInput(D_MAIN_IN, "DEMUX IN");
-		configOutput(M_MAIN_OUT, "MUX OUT");
-		configOutput(D_OUTPUT_1, "DEMUX OUT 1");
-		configOutput(D_OUTPUT_2, "DEMUX OUT 2");
-		configOutput(D_OUTPUT_3, "DEMUX OUT 3");
-		configOutput(D_OUTPUT_4, "DEMUX OUT 4");
-
 		selMux = selDemux = 0;
 	}
 
@@ -73,7 +62,7 @@ struct AMuxDemux : Module {
 		// DEMUX
 		// Lights correspond with selected output
 		lights[selDemux + N_MUX_IN + 1].setBrightness(0.f);
-		selMux = (unsigned int)clamp((int)params[D_SELECTOR_PARAM].getValue(), 0, N_DEMUX_OUT);
+		selDemux = (unsigned int)clamp((int)params[D_SELECTOR_PARAM].getValue(), 0, N_DEMUX_OUT);
 		lights[selDemux + N_MUX_IN + 1].setBrightness(1.f);
 
 		if (inputs[D_MAIN_IN].isConnected()) {
@@ -98,8 +87,8 @@ struct AMuxDemuxWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(50, 28)), module, AMuxDemux::M_SELECTOR_PARAM));
-		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(10, 85.525)), module, AMuxDemux::D_SELECTOR_PARAM));
+		addParam(createParamCentered<RoundBlackSnapKnob>(mm2px(Vec(50, 28)), module, AMuxDemux::M_SELECTOR_PARAM));
+		addParam(createParamCentered<RoundBlackSnapKnob>(mm2px(Vec(10, 85.525)), module, AMuxDemux::D_SELECTOR_PARAM));
 
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 22.989)), module, AMuxDemux::M_INPUT_1));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 33.274)), module, AMuxDemux::M_INPUT_2));
