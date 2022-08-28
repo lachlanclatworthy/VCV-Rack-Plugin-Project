@@ -39,8 +39,8 @@ struct AMuxDemux : Module {
 
 	AMuxDemux() {
 		config(PARAMS_LEN, INPUTS_LEN, OUTPUTS_LEN, LIGHTS_LEN);
-		configParam(M_SELECTOR_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(D_SELECTOR_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(M_SELECTOR_PARAM, 0.f, 3.0f, 0.f, "Mux Selector");
+		configParam(D_SELECTOR_PARAM, 0.f, 3.0f, 0.f, "Demux Selector");
 		configInput(M_INPUT_1, "");
 		configInput(M_INPUT_2, "");
 		configInput(M_INPUT_3, "");
@@ -51,9 +51,26 @@ struct AMuxDemux : Module {
 		configOutput(D_OUTPUT_2, "");
 		configOutput(D_OUTPUT_3, "");
 		configOutput(D_OUTPUT_4, "");
+
+		selMux = selDemux = 0;
 	}
 
 	void process(const ProcessArgs& args) override {
+		// MUX
+		// Update the lights so that the one corresponding
+		// with the selected input is lit 
+		lights[selMux].setBrightness(0.f);
+		selMux = (unsigned int)clamp((int)params[M_SELECTOR_PARAM].getValue(), 0, N_MUX_IN);
+		lights[selMux].setBrightness(1.f);
+
+		if (outputs[M_MAIN_OUT].isConnected()) {
+			if (inputs[selMux].isConnected()) {
+				// Send selected input's voltage to the Mux output
+				outputs[M_MAIN_OUT].setVoltage(inputs[selMux].getVoltage());
+			}
+		}
+
+		// TODO: DEMUX Implementation
 	}
 
 	unsigned int selMux, selDemux;	// selector values
