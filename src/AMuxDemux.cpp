@@ -94,7 +94,7 @@ struct AMuxDemuxWidget : ModuleWidget {
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(-696.309, 58.251)), module, AMuxDemux::M_INPUT_2));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(-694.818, 99.24)), module, AMuxDemux::M_INPUT_3));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(-693.328, 141.72)), module, AMuxDemux::M_INPUT_4));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(-688.111, 295.245)), module, AMuxDemux::INPUTB1_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(-688.111, 295.245)), module, AMuxDemux::D_MAIN_IN));
 
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(-567.378, 94.769)), module, AMuxDemux::M_MAIN_OUT));
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(-566.633, 220.719)), module, AMuxDemux::D_OUTPUT_1));
