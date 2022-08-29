@@ -53,10 +53,19 @@ struct AMuxDemux : Module {
 		// Update the lights so that the one corresponding
 		// with the selected input is lit 
 		lights[selMux].setBrightness(0.f);
-		//selMux = (unsigned int)clamp((int)params[M_SELECTOR_PARAM].getValue(), 0, N_MUX_IN);		// Using parameter knob for selection
 
-		// Convert voltage to a Mux input mapping
-		selectorValue = (int)round(inputs[M_SELECTOR_IN].getVoltage() / 10.0f * N_MUX_IN);		// this is an inelegant solution, but it works
+		if (inputs[M_SELECTOR_IN].isConnected()) {
+			// Use the CV Input
+			// Convert voltage to a Mux input mapping
+			selectorValue = (int)round(inputs[M_SELECTOR_IN].getVoltage() / 10.0f * N_MUX_IN);		// this is an inelegant solution, but it works
+		} else {
+			// Use the Selector
+			selectorValue = (int)params[M_SELECTOR_PARAM].getValue();								// Using parameter knob for selection
+
+			/* Is there a way to indicate that a parameter has been bypassed / made inactive?
+		 	We could use a tertiary conditional statement here but this feels more readable */
+		}
+
 		selMux = (unsigned int)clamp(selectorValue, 0, N_MUX_IN);
 		
 		lights[selMux].setBrightness(1.f);
@@ -71,10 +80,16 @@ struct AMuxDemux : Module {
 		// DEMUX
 		// Lights correspond with selected output
 		lights[selDemux + N_MUX_IN + 1].setBrightness(0.f);
-		// selDemux = (unsigned int)clamp((int)params[D_SELECTOR_PARAM].getValue(), 0, N_DEMUX_OUT);
 
-		// Convert voltage to a Demux input mapping
-		selectorValue = (int)round(inputs[D_SELECTOR_IN].getVoltage() / 10.0f * N_DEMUX_OUT);	
+		if (inputs[D_SELECTOR_IN].isConnected()) {
+			// Use the CV Input
+			// Convert voltage to a Demux input mapping
+			selectorValue = (int)round(inputs[D_SELECTOR_IN].getVoltage() / 10.0f * N_DEMUX_OUT);		// this is an inelegant solution, but it works
+		} else {
+			// Use the Selector
+			selectorValue = (int)params[D_SELECTOR_PARAM].getValue();									// Using parameter knob for selection
+		}
+
 		selDemux = (unsigned int)clamp(selectorValue, 0, N_DEMUX_OUT);
 		lights[selDemux + N_MUX_IN + 1].setBrightness(1.f);
 
