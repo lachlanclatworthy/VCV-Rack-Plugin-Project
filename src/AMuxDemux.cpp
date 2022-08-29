@@ -13,6 +13,8 @@ struct AMuxDemux : Module {
 		M_INPUT_3,
 		M_INPUT_4,
 		D_MAIN_IN,
+		M_SELECTOR_IN,
+		D_SELECTOR_IN,
 		INPUTS_LEN,
 		N_MUX_IN = M_INPUT_4,
 	};
@@ -49,7 +51,10 @@ struct AMuxDemux : Module {
 		// Update the lights so that the one corresponding
 		// with the selected input is lit 
 		lights[selMux].setBrightness(0.f);
-		selMux = (unsigned int)clamp((int)params[M_SELECTOR_PARAM].getValue(), 0, N_MUX_IN);
+		//selMux = (unsigned int)clamp((int)params[M_SELECTOR_PARAM].getValue(), 0, N_MUX_IN);
+
+		// Round voltage to nearest integer, clamp that between 0 and number of inputs
+		selMux = (unsigned int)clamp((int)round(inputs[M_SELECTOR_IN].getVoltage()), 0, N_MUX_IN);
 		lights[selMux].setBrightness(1.f);
 
 		if (outputs[M_MAIN_OUT].isConnected()) {
@@ -62,7 +67,8 @@ struct AMuxDemux : Module {
 		// DEMUX
 		// Lights correspond with selected output
 		lights[selDemux + N_MUX_IN + 1].setBrightness(0.f);
-		selDemux = (unsigned int)clamp((int)params[D_SELECTOR_PARAM].getValue(), 0, N_DEMUX_OUT);
+		// selDemux = (unsigned int)clamp((int)params[D_SELECTOR_PARAM].getValue(), 0, N_DEMUX_OUT);
+		selDemux = (unsigned int)clamp((int)round(inputs[D_SELECTOR_IN].getVoltage()), 0, N_DEMUX_OUT);
 		lights[selDemux + N_MUX_IN + 1].setBrightness(1.f);
 
 		if (inputs[D_MAIN_IN].isConnected()) {
@@ -94,6 +100,8 @@ struct AMuxDemuxWidget : ModuleWidget {
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 33.274)), module, AMuxDemux::M_INPUT_2));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 44.588)), module, AMuxDemux::M_INPUT_3));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 56.314)), module, AMuxDemux::M_INPUT_4));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(50, 18)), module, AMuxDemux::M_SELECTOR_IN));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 75)), module, AMuxDemux::D_SELECTOR_IN));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 98.690)), module, AMuxDemux::D_MAIN_IN));
 
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(50, 43.354)), module, AMuxDemux::M_MAIN_OUT));
