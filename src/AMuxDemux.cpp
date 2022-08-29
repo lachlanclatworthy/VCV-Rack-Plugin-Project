@@ -47,14 +47,18 @@ struct AMuxDemux : Module {
 	}
 
 	void process(const ProcessArgs& args) override {
+		int selectorValue;
+		
 		// MUX
 		// Update the lights so that the one corresponding
 		// with the selected input is lit 
 		lights[selMux].setBrightness(0.f);
-		//selMux = (unsigned int)clamp((int)params[M_SELECTOR_PARAM].getValue(), 0, N_MUX_IN);
+		//selMux = (unsigned int)clamp((int)params[M_SELECTOR_PARAM].getValue(), 0, N_MUX_IN);		// Using parameter knob for selection
 
-		// Round voltage to nearest integer, clamp that between 0 and number of inputs
-		selMux = (unsigned int)clamp((int)round(inputs[M_SELECTOR_IN].getVoltage()), 0, N_MUX_IN);
+		// Convert voltage to a Mux input mapping
+		selectorValue = (int)round(inputs[M_SELECTOR_IN].getVoltage() / 10.0f * N_MUX_IN);		// this is an inelegant solution, but it works
+		selMux = (unsigned int)clamp(selectorValue, 0, N_MUX_IN);
+		
 		lights[selMux].setBrightness(1.f);
 
 		if (outputs[M_MAIN_OUT].isConnected()) {
@@ -68,7 +72,10 @@ struct AMuxDemux : Module {
 		// Lights correspond with selected output
 		lights[selDemux + N_MUX_IN + 1].setBrightness(0.f);
 		// selDemux = (unsigned int)clamp((int)params[D_SELECTOR_PARAM].getValue(), 0, N_DEMUX_OUT);
-		selDemux = (unsigned int)clamp((int)round(inputs[D_SELECTOR_IN].getVoltage()), 0, N_DEMUX_OUT);
+
+		// Convert voltage to a Demux input mapping
+		selectorValue = (int)round(inputs[D_SELECTOR_IN].getVoltage() / 10.0f * N_DEMUX_OUT);	
+		selDemux = (unsigned int)clamp(selectorValue, 0, N_DEMUX_OUT);
 		lights[selDemux + N_MUX_IN + 1].setBrightness(1.f);
 
 		if (inputs[D_MAIN_IN].isConnected()) {
@@ -93,8 +100,8 @@ struct AMuxDemuxWidget : ModuleWidget {
 		addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 		addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-		addParam(createParamCentered<RoundBlackSnapKnob>(mm2px(Vec(50, 28)), module, AMuxDemux::M_SELECTOR_PARAM));
-		addParam(createParamCentered<RoundBlackSnapKnob>(mm2px(Vec(10, 85.525)), module, AMuxDemux::D_SELECTOR_PARAM));
+		addParam(createParamCentered<RoundBlackSnapKnob>(mm2px(Vec(50, 30)), module, AMuxDemux::M_SELECTOR_PARAM));
+		addParam(createParamCentered<RoundBlackSnapKnob>(mm2px(Vec(10, 87)), module, AMuxDemux::D_SELECTOR_PARAM));
 
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 22.989)), module, AMuxDemux::M_INPUT_1));
 		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(10, 33.274)), module, AMuxDemux::M_INPUT_2));
