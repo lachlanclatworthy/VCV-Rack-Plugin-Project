@@ -28,6 +28,14 @@
       "tags": [
         "Multiple"
       ]
+    },
+    {
+      "slug": "AClock",
+      "name": "AClock",
+      "description": "Generates a regular pulse for a given duration",
+      "tags": [
+        "Clock generator"
+      ]
     }
   ]
 }
