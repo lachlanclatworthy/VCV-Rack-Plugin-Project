@@ -5,6 +5,7 @@
 struct AClock : Module {
     enum ParamIds {
         BPM_KNOB,
+        BARS_SWITCH,
         NUM_PARAMS,
     };
 
@@ -28,6 +29,7 @@ struct AClock : Module {
     AClock() {
         config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
         configParam(BPM_KNOB, 30.0f, 360.0f, 120.0f, "Tempo", " BPM");
+        configParam(BARS_SWITCH, 0.f, 1.f, 0.f, "Beats or Bars");
         counter = period = 0.f;
     }
 
@@ -37,6 +39,11 @@ struct AClock : Module {
 void AClock::process(const ProcessArgs& args) {
     float BPM = params[BPM_KNOB].getValue();
     period = 60.f * args.sampleRate / BPM;  // samples
+
+    // Is the period each beat or each bar
+    if (params[BARS_SWITCH].getValue()) {
+        period = period * 4;    // We're only handling 4/4 currently
+    }
 
     if (counter >= period) {
         pgen.trigger();
@@ -57,11 +64,16 @@ struct AClockWidget : ModuleWidget {
         setPanel(APP->window->loadSvg(
             asset::plugin(pluginInstance, "res/AClock.svg")));
 
-        addParam(createParamCentered<RoundBigBlackKnob>(mm2px(Vec(32.5, 30)), module, AClock::BPM_KNOB));
+        addParam(createParamCentered<RoundBigBlackKnob>(
+            mm2px(Vec(22.5, 30)), module, AClock::BPM_KNOB));
+        addParam(createParamCentered<BefacoSwitch>(mm2px(Vec(42.5, 30)), module,
+                                        AClock::BARS_SWITCH));
 
-        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(32.5, 50)), module, AClock::PULSE_OUT));
+        addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(32.5, 50)), module,
+                                                   AClock::PULSE_OUT));
 
-        addChild(createLightCentered<MediumLight<RedLight>>(mm2px(Vec(22.5, 50)), module, AClock::PULSE_LIGHT));
+        addChild(createLightCentered<MediumLight<RedLight>>(
+            mm2px(Vec(22.5, 50)), module, AClock::PULSE_LIGHT));
     }
 };
 
