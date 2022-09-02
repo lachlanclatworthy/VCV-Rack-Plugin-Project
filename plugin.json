@@ -42,6 +42,12 @@
       "name": "ASequencer",
       "description": "An eight step sequencer",
       "tags": []
+    },
+    {
+      "slug": "ADivider",
+      "name": "ADivider",
+      "description": "",
+      "tags": []
     }
   ]
 }
