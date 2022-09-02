@@ -11,3 +11,4 @@ extern Plugin* pluginInstance;
 extern Model* modelAComparator;
 extern Model* modelAMuxDemux;
 extern Model* modelAClock;
+extern Model* modelASequencer;
