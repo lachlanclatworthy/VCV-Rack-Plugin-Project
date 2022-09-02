@@ -36,6 +36,12 @@
       "tags": [
         "Clock generator"
       ]
+    },
+    {
+      "slug": "ASequencer",
+      "name": "ASequencer",
+      "description": "An eight step sequencer",
+      "tags": []
     }
   ]
 }
