@@ -84,18 +84,30 @@ void ADivider::process(const ProcessArgs& args) {
 }
 
 struct ADividerWidget : ModuleWidget {
+    int outputY = 50;
+    int outputYOffset = 15;
+
     ADividerWidget(ADivider* module) {
         setModule(module);
         setPanel(APP->window->loadSvg(
             asset::plugin(pluginInstance, "res/ADivider.svg")));
 
         // Input
+        addInput(createInput<PJ301MPort>(mm2px(Vec(10,20)),module,ADivider::MAIN_IN));
 
         // Output
-
-        // Parameters
+        addOutput(createOutput<PJ301MPort>(mm2px(Vec(20,outputY)),module,ADivider::OUTPUT2));
+        addOutput(createOutput<PJ301MPort>(mm2px(Vec(20,outputY + outputYOffset)),module,ADivider::OUTPUT4));
+        addOutput(createOutput<PJ301MPort>(mm2px(Vec(20,outputY + outputYOffset * 2)),module,ADivider::OUTPUT8));
+        addOutput(createOutput<PJ301MPort>(mm2px(Vec(20,outputY + outputYOffset * 3)),module,ADivider::OUTPUT16));
+        addOutput(createOutput<PJ301MPort>(mm2px(Vec(20,outputY + outputYOffset * 4)),module,ADivider::OUTPUT32));
 
         // Lights
+        addChild(createLight<MediumLight<YellowLight>>(mm2px(Vec(5, outputY)), module, ADivider::LIGHT2));
+        addChild(createLight<MediumLight<YellowLight>>(mm2px(Vec(5, outputY + outputYOffset)), module, ADivider::LIGHT4));
+        addChild(createLight<MediumLight<YellowLight>>(mm2px(Vec(5, outputY + outputYOffset * 2)), module, ADivider::LIGHT8));
+        addChild(createLight<MediumLight<YellowLight>>(mm2px(Vec(5, outputY + outputYOffset * 3)), module, ADivider::LIGHT16));
+        addChild(createLight<MediumLight<YellowLight>>(mm2px(Vec(5, outputY + outputYOffset * 4)), module, ADivider::LIGHT32));
     }
 };
 
