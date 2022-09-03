@@ -12,3 +12,5 @@ extern Model* modelAComparator;
 extern Model* modelAMuxDemux;
 extern Model* modelAClock;
 extern Model* modelASequencer;
+extern Model* modelADivider;
+extern Model* modelARandom;
