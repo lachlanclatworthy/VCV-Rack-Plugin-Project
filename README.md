@@ -9,4 +9,4 @@ Use that knowledge to write my own VCV Rack Plugin.
 
 **Module** - Generates or processes signals using voltage as inputs and outputs.
 
-**Project currently on hiatus until at least October to focus on other work.**
+**Project currently on hiatus to focus on other projects.**
